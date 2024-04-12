@@ -13,7 +13,7 @@ extra_patterns = [
 # the first argument is the path of the view
 urlpatterns = [
     # Placeholder for all the months in the year
-    path("", views.index),
+    path("", views.index, name="index"),
     path("<mm:month>", views.monthly_challenge_by_number),
     path("<str:month>", views.monthly_challenge, name="month-challenge"),
     path("credit", include(extra_patterns))

@@ -1,7 +1,7 @@
 from django.urls import reverse
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
-# from django.template.loader import render_to_string
+from django.http import HttpResponse, Http404, HttpResponseNotFound, HttpResponseRedirect
+from django.template.loader import render_to_string
 
 # Create your views here.
 
@@ -48,7 +48,8 @@ def monthly_challenge(request, month):
             "text": challenge_text
         })
     except:
-        return HttpResponseNotFound("<h1>This month is not supported!</h1>")
+        # Automatically call the 404.html in your template zone when you set the DEBUG to True or default if you set the DEBUG to False
+        raise Http404()
 
 
 def other_views(request, folder_name, page_num):
